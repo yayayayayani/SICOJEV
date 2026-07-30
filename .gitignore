@@ -1,0 +1,25 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno
+.env
+.env.*
+
+# Builds
+dist/
+build/
+release/
+
+# Base de datos
+*.db
+*.sqlite
+
+# Logs
+*.log
+
+# VS Code
+.vscode/
+
+# Sistema
+.DS_Store
+Thumbs.db
