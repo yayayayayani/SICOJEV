@@ -7,7 +7,7 @@ import ActividadesPage from "../pages/Actividades/ActividadesPage";
 import MovimientosPage from "../pages/Movimientos/MovimientosPage";
 import ReportesPage from "../pages/Reportes/ReportesPage";
 import UsuariosPage from "../pages/Usuarios/UsuariosPage";
-import ConfiguracionPage from "../pages/configuracion/ConfiguracionPage";
+import ConfiguracionPage from "../pages/Configuracion/ConfiguracionPage";
 import RespaldosPage from "../pages/Respaldos/RespaldosPage";
 
 export default function AppRouter() {
