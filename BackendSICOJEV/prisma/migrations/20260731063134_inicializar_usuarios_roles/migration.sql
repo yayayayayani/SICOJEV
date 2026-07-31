@@ -1,0 +1,29 @@
+-- CreateTable
+CREATE TABLE "SICOJEV_ROLES" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "nombre" TEXT NOT NULL,
+    "descripcion" TEXT,
+    "estado" BOOLEAN NOT NULL DEFAULT true
+);
+
+-- CreateTable
+CREATE TABLE "SICOJEV_USUARIO" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "nombreCompleto" TEXT NOT NULL,
+    "nombreUsuario" TEXT NOT NULL,
+    "passwordHash" TEXT NOT NULL,
+    "estado" BOOLEAN NOT NULL DEFAULT true,
+    "rolId" INTEGER NOT NULL,
+    "fechaCreacion" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "fechaActualizacion" DATETIME NOT NULL,
+    CONSTRAINT "SICOJEV_USUARIO_rolId_fkey" FOREIGN KEY ("rolId") REFERENCES "SICOJEV_ROLES" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "SICOJEV_ROLES_nombre_key" ON "SICOJEV_ROLES"("nombre");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "SICOJEV_USUARIO_nombreUsuario_key" ON "SICOJEV_USUARIO"("nombreUsuario");
+
+-- CreateIndex
+CREATE INDEX "SICOJEV_USUARIO_rolId_idx" ON "SICOJEV_USUARIO"("rolId");

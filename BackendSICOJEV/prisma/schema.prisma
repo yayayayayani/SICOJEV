@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model SICOJEV_ROL {
+  id          Int                @id @default(autoincrement())
+  nombre      String             @unique
+  descripcion String?
+  estado      Boolean            @default(true)
+  usuarios    SICOJEV_USUARIO[]
+
+  @@map("SICOJEV_ROLES")
+}
+
+model SICOJEV_USUARIO {
+  id              Int          @id @default(autoincrement())
+  nombreCompleto  String
+  nombreUsuario   String       @unique
+  passwordHash    String
+  estado          Boolean      @default(true)
+  rolId           Int
+  fechaCreacion   DateTime     @default(now())
+  fechaActualizacion DateTime  @updatedAt
+
+  rol             SICOJEV_ROL  @relation(fields: [rolId], references: [id])
+
+  @@index([rolId])
+  @@map("SICOJEV_USUARIO")
+}
