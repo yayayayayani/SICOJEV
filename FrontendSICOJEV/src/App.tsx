@@ -1,6 +1,11 @@
+import MainLayout from "./components/layout/MainLayout";
+
 function App() {
   return (
-    <h1>SICOJEV</h1>
+    <MainLayout>
+      <h1>Bienvenido a SICOJEV</h1>
+      <p>Dashboard en construcción...</p>
+    </MainLayout>
   );
 }
 
