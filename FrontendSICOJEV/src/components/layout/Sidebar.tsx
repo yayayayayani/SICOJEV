@@ -1,11 +1,13 @@
+import { useLocation, useNavigate } from "react-router-dom";
+
 import {
+  Assessment,
   Dashboard,
   Event,
   Payments,
-  Assessment,
   People,
-  Settings,
   Save,
+  Settings,
 } from "@mui/icons-material";
 
 import {
@@ -22,34 +24,44 @@ const menuItems = [
   {
     text: "Dashboard",
     icon: <Dashboard />,
+    path: "/",
   },
   {
     text: "Actividades",
     icon: <Event />,
+    path: "/actividades",
   },
   {
     text: "Movimientos",
     icon: <Payments />,
+    path: "/movimientos",
   },
   {
     text: "Reportes",
     icon: <Assessment />,
+    path: "/reportes",
   },
   {
     text: "Usuarios",
     icon: <People />,
+    path: "/usuarios",
   },
   {
     text: "Configuración",
     icon: <Settings />,
+    path: "/configuracion",
   },
   {
     text: "Respaldos",
     icon: <Save />,
+    path: "/respaldos",
   },
 ];
 
 export default function Sidebar() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <Box
       sx={{
@@ -84,19 +96,31 @@ export default function Sidebar() {
 
       <List>
         {menuItems.map((item) => (
-          <ListItemButton
-            key={item.text}
-            sx={{
-              py: 1.5,
-              mx: 1,
-              my: .5,
-              borderRadius: 2,
+            <ListItemButton
+                key={item.text}
+                onClick={() => navigate(item.path)}
+                selected={location.pathname === item.path}
+                sx={{
+                    py: 1.5,
+                    mx: 1,
+                    my: .5,
+                    borderRadius: 2,
 
-              "&:hover": {
-                bgcolor: "primary.main",
-              },
-            }}
-          >
+                    color: "white",
+
+                    "&.Mui-selected": {
+                        bgcolor: "primary.main",
+                    },
+
+                    "&.Mui-selected:hover": {
+                        bgcolor: "primary.main",
+                    },
+
+                    "&:hover": {
+                        bgcolor: "primary.main",
+                    },
+                }}
+            >
             <ListItemIcon
               sx={{
                 color: "white",

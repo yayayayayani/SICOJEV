@@ -1,12 +1,7 @@
-import MainLayout from "./components/layout/MainLayout";
+import AppRouter from "./routes/AppRouter";
 
 function App() {
-  return (
-    <MainLayout>
-      <h1>Bienvenido a SICOJEV</h1>
-      <p>Dashboard en construcción...</p>
-    </MainLayout>
-  );
+  return <AppRouter />;
 }
 
 export default App;
